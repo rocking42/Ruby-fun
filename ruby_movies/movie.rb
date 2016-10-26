@@ -21,6 +21,6 @@ class Movie
   end
 
   def to_s
-    puts "#{'movie'.upcase}\nMovie title: #{@title}\nRating: #{@rank}\nDuration: #{@duration} min"
+    "#{'movie'.upcase}\nMovie title: #{@title}\nRating: #{@rank}\nDuration: #{@duration} min"
   end
 end

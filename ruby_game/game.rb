@@ -13,8 +13,8 @@ class Game
   end
 
   def play
-    puts "There are #{@players.length} players in #{@name}"
-    puts @players
+    "There are #{@players.length} players in #{@name}"
+    @players
   end
 
 end

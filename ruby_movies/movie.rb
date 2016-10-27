@@ -20,6 +20,18 @@ class Movie
     @duration += 10
   end
 
+  def hit?
+    @rank >= 10
+  end
+
+  def status
+    if hit?
+      "Hit"
+    else
+      "Flop"
+    end
+  end
+
   def to_s
     "#{'movie'.upcase}\nMovie title: #{@title}\nRating: #{@rank}\nDuration: #{@duration} min"
   end

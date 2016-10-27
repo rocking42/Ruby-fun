@@ -48,4 +48,34 @@ describe Movie do
     end
   end
 
+
+  context "rank of at least 10" do
+
+    before do
+      @movie = Movie.new("goonies", 10)
+    end
+
+    it "is a hit" do
+      expect(@movie.status).to eq "Hit"
+    end
+
+    it "should be a false" do
+      expect(@movie.hit?).to eq true
+    end
+
+  end
+
+  context "with a rank of less than 10" do
+    before do
+      @movie = Movie.new("rage", 9)
+    end
+
+    it "should be a flop" do
+      expect(@movie.status).to eq "Flop"
+    end
+
+    it "should be a false" do
+      expect(@movie.hit?).to eq false
+    end
+  end
 end

@@ -9,11 +9,12 @@ class Crowdfund
   end
 
   def add_funds(n)
+    "Added $#{n} to #{@name}"
     @funds += n
-    puts "Added $#{n} to #{@name}"
   end
 
   def lose_funds(n)
+    "Sub $#{n} from #{@name}"
     @funds -= n
   end
 
@@ -23,6 +24,7 @@ class Crowdfund
 
   def remaining
     puts "#{@name} has $#{@goal - @funds} remaining till their goal"
+    @goal - @funds
   end
 
   def to_s

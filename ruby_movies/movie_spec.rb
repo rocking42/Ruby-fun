@@ -1,19 +1,14 @@
-require_relative 'playlist'
+require_relative 'movie'
 
 describe Movie do
 
   before do
     @initial_rank = 9
     @movie = Movie.new("goonies", @initial_rank)
-    @playlist = Playlist.new("happy")
   end
 
   it "Has a capitalized title" do
     expect(@movie.title).to eq("Goonies")
-  end
-
-  it "Playlist can add movies" do
-    @playlist.add_movie(@movie)
   end
 
   it "has an initial rank" do
@@ -21,7 +16,7 @@ describe Movie do
   end
 
   it "has a string representation" do
-    expect(@movie.to_s).to eq "MOVIE\nMovie title: Goonies\nRating: 9\nDuration: 100 min"
+    expect(@movie.to_s).to eq "MOVIE\nMovie title: Goonies\nStatus: Flop\nDuration: 100 min"
   end
 
   it "increases rank by one when given thumbs up" do
@@ -56,11 +51,11 @@ describe Movie do
     end
 
     it "is a hit" do
-      expect(@movie.status).to eq "Hit"
+      expect(@movie.hit?).to eq true
     end
 
-    it "should be a false" do
-      expect(@movie.hit?).to eq true
+    it "has a status of hit" do
+      expect(@movie.status).to eq "Hit"
     end
 
   end
@@ -70,12 +65,13 @@ describe Movie do
       @movie = Movie.new("rage", 9)
     end
 
+    it "should be a false" do
+      expect(@movie.hit?).to eq false
+    end
+
     it "should be a flop" do
       expect(@movie.status).to eq "Flop"
     end
 
-    it "should be a false" do
-      expect(@movie.hit?).to eq false
-    end
   end
 end

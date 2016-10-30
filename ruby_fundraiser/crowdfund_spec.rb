@@ -1,4 +1,4 @@
-require_relative 'charities'
+require_relative 'crowdfund'
 $stdout = StringIO.new
 
 describe Crowdfund do
@@ -36,6 +36,16 @@ describe Crowdfund do
 
     it "goals should be default" do
       expect(@crowdfund.goal).to eq 10000
+    end
+
+    it "should return false when not funded" do
+      expect(@crowdfund.funded?).to eq false
+    end
+
+    it "should return true when fully funded" do
+      @crowdfund.add_funds(10000)
+
+      expect(@crowdfund.funded?).to eq true
     end
   end
 

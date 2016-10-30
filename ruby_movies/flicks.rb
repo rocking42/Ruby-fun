@@ -13,11 +13,11 @@ playlist1.add_movie(movie3)
 playlist1.play
 
 playlist2 = Playlist.new("mickey")
-movie4 = Movie.new("gremlins", 7)
+movie4 = Movie.new("gremlins", 10)
 movie5 = Movie.new("James Bond", 5)
 movie6 = Movie.new("Ice Age", 4)
 
 playlist2.add_movie(movie4)
 playlist2.add_movie(movie3)
 
-playlist2.play
+puts playlist2.play

@@ -25,14 +25,15 @@ class Movie
   end
 
   def status
-    if hit?
-      "Hit"
-    else
-      "Flop"
-    end
+    hit? ? "Hit" : "Flop"
+    # if hit?
+    #   "Hit"
+    # else
+    #   "Flop"
+    # end
   end
 
   def to_s
-    "#{'movie'.upcase}\nMovie title: #{@title}\nRating: #{@rank}\nDuration: #{@duration} min"
+    "#{'movie'.upcase}\nMovie title: #{@title}\nStatus: #{(status)}\nDuration: #{@duration} min"
   end
 end

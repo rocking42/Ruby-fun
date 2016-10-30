@@ -21,8 +21,12 @@ class Player
   end
 
   def w00t
-    @health -= 15
+    @health += 15
     puts "#{@name}".ljust(30,".") + "got w00ted!"
+  end
+
+  def strong?
+    @health > 100
   end
 
   def to_s

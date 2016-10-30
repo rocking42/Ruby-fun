@@ -27,6 +27,14 @@ class Crowdfund
     @goal - @funds
   end
 
+  def funded?
+    if @funds >= @goal
+      true
+    else
+      false
+    end
+  end
+
   def to_s
     "Project #{@name} has $#{@funds} towards a goal of $#{@goal}"
   end

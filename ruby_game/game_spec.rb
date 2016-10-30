@@ -1,51 +1,44 @@
 require_relative 'game'
+
 $stdout = StringIO.new
 
-describe Player do
 
+describe Game do
   before do
-    @player = Player.new("jerry", 50)
     @game = Game.new("first game")
   end
 
-  it "Name should be capitlalized" do
-    expect(@player.name).to eq "Jerry"
-  end
-
-  it "score should be correct" do
-    expect(@player.score).to eq 55
-  end
-
-  it "Blam reduces 10 health" do
-    @player.blam
-    expect(@player.health).to eq 40
-  end
-
-  it "w00t reduces 15 health" do
-    @player.w00t
-    expect(@player.health).to eq 35
-  end
-
-  it "produces correct string" do
-    expect(@player.to_s).to eq "I'm Jerry with a health of 50 and a score of 55"
-  end
-
-  it "game should be capitalized" do
-    expect(@game.name).to eq "First game"
-  end
-
-  it "adds and display characters" do
-    @game.add_players(@player)
-  end
-
-  context "default values" do
-
+  context "being played with two characters" do
     before do
-      @player = Player.new("jerry")
+      @initial_health = 100
+      @player = Player.new("Jerry", @initial_health)
+
+      @game.add_players(@player)
     end
 
-    it "sets default health" do
-      expect(@player.health).to eq 100
+    it "game name should be capitalized" do
+      expect(@game.name).to eq "First game"
+    end
+
+    it "should w00t player with a high roll" do
+      Die.any_instance.stub(:roll).and_return(5)
+      @game.play
+
+      expect(@player.health).to eq @initial_health + 15
+    end
+
+    it "should skip player with a medium roll" do
+      Die.any_instance.stub(:roll).and_return(3)
+      @game.play
+
+      expect(@player.health).to eq @initial_health
+    end
+
+    it "should blam player with low roll" do
+      Die.any_instance.stub(:roll).and_return(1)
+      @game.play
+
+      expect(@player.health).to eq @initial_health - 10
     end
 
   end
